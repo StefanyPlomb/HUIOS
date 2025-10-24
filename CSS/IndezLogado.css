@@ -32,7 +32,6 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-
 .logo {
   color: #fff;
   font-family: 'Playfair Display', serif;
@@ -48,20 +47,72 @@ nav {
   border-radius: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 nav a {
   text-decoration: none;
   color: #fff;
-  font-weight: 500;
+  font-weight: 100;
   transition: all 0.3s;
   padding: 0.3rem 0.8rem;
   border-radius: 8px;
+  font-size: 80%;
 }
 
 nav a:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* KIDS menu */
+.kids-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.kids-btn {
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  transition: 0.3s;
+  color: #fff;
+  font-size: 80%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kids-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.kids-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  top: 110%;
+  left: 0;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.kids-content a {
+  color: #333;
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  transition: 0.2s;
+}
+
+.kids-content a:hover {
+  background-color: #f2f2f2;
+  color: #111;
 }
 
 .hero {
@@ -120,7 +171,7 @@ section h3 {
 .carousel {
   position: relative;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 2000px;
   margin: 0 auto;
   border-radius: 1rem;
 }

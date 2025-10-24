@@ -1,4 +1,4 @@
-/* script.js */
+//Carousel
 function initCarousel(carouselId) {
   const carousel = document.getElementById(carouselId);
   const track = carousel.querySelector('.carousel-track');
@@ -42,7 +42,13 @@ function initCarousel(carouselId) {
   updateCarousel();
 }
 
-// Inicializa todos os carrosséis da página
-initCarousel('dev-carousel');
-initCarousel('douglas-carousel');
-initCarousel('teo-carousel');
+
+//Tema Kids 
+
+const kidsBtn = document.querySelector('.kids-btn');
+const kidsContent = document.querySelector('.kids-content');
+
+kidsBtn.addEventListener('click', () => {
+  kidsContent.style.display = kidsContent.style.display === 'flex' ? 'none' : 'flex';
+});
+
