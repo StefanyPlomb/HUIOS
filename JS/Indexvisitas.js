@@ -162,7 +162,7 @@ loginButton.addEventListener('click', () => {
         document.getElementById('user').value = '';
         document.getElementById('password').value = '';
         // Redirecionar para entrada.html
-        window.location.href = 'entrada.html'; // Caminho relativo para entrada.html
+        window.location.href = 'IndexLogado.html'; // Caminho relativo para entrada.html
     } else {
         // Login falhou
         alert('Usuário ou senha incorretos.');
@@ -173,7 +173,7 @@ loginButton.addEventListener('click', () => {
 });
 
 document.getElementById('register-button').addEventListener('click', function() {
-    window.location.href = '../HTML/cadastro.html';
+    window.location.href = '../HTML/PrimeiroAcesso.html';
 });
 // JavaScript para o Carrossel
 // Variáveis para o carrossel
