@@ -9,276 +9,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/visita.css">
 </head>
-<body class="body-estilo-base">
-    <!-- Header -->
-    <header class="cabecalho-estilo">
-        <!-- LifeTask como imagem na esquerda -->
-        <div class="cabecalho-logo-container">
-            <img src="../src/IMG/HomeLogo.png" alt="Logotipo do Huios" title="Logotipo do Huios" class="Huios-logo-home">
-        </div>
-        <!-- Botões de navegação centralizados -->
-        <nav class="div-botao-header">
-            <ul class="navegacao-lista">
-                <li><a href="#sobre-nos" class="header-button" title="Ir para a seção Sobre Nós">Sobre Nós</a></li>
-                <li><a href="#parcerias" class="header-button" title="Ir para a seção Parcerias">Parcerias</a></li>
-                <li><a href="#funcionalidades" class="header-button" title="Ir para a seção Diferenciais">Diferenciais</a></li>
-            </ul>
-        </nav>
-        <!-- Ícone de usuário como botão na direita -->
-        <div class="cabecalho-usuario">
-            <button class="botao-usuario-estilo" id="open-modal-button" title="Abrir menu de login ou cadastro">
-                <img src="../src/IMG/icone-usuario.webp" alt="Ícone de usuário" class="icone-usuario-estilo">
-            </button>
-        </div>
-        <!-- A sobreposição do modal de login -->
-        <div id="login-modal-overlay" class="modal-overlay">
-            <div class="modal-container">
-                <h2 class="texto-modal">Login</h2>
-                <!-- Campos de entrada para Usuario e Senha -->
-                <div class="input-group">
-                    <input type="text" id="user" placeholder="Usuário" required>
-                    <!-- Ícone de usuário para o campo de entrada -->
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </span>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" placeholder="Senha" required>
-                    <!-- Ícone de cadeado para o campo de Senha -->
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </span>
-                </div>
-                <a href="#" id="forgot-password-link" class="text-sm text-blue-500 hover:underline block text-right mb-4">Esqueci a senha</a>
-                <!-- Botões para login e registro -->
-                <button class="modal-button login-button" id="login-button" title="Entrar na sua conta">
-                    Entrar
-                </button>
-                <button class="modal-button register-button" id="register-button" title="Ir para a página de cadastro">
-                    Fazer Cadastro
-                </button>
-            </div>
-        </div>
+<body >
+   
+    <header>
 
-         <!-- Novo Modal para Esqueci a Senha -->
-         <div id="forgot-password-modal" class="modal-overlay">
-            <div class="modal-container">
-                <h2 class="texto-modal">Recuperar Senha</h2>
-                <p class="text-center text-white mb-4">Digite seu e-mail para receber o link de redefinição.</p>
-                <div class="input-group">
-                    <input type="email" id="forgot-email" placeholder="Seu e-mail" required>
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    </span>
-                </div>
-                <button id="send-reset-link-btn" class="modal-button login-button mt-4" title="Enviar link de redefinição de senha">Enviar Link</button>
-                <button id="back-to-login-btn" class="modal-button register-button mt-2" title="Voltar para o login">Voltar ao Login</button>
-            </div>
-        </div>
+        <div class="logo">HUIOS</div>
+            <nav>
+            <a href="#" class="btn-login">Entrar</a>
+            </nav>
 
-        <!-- Modal para Redefinir Senha (Invisível inicialmente) -->
-        <div id="reset-password-modal" class="modal-overlay">
-            <div class="modal-container">
-                <h2 class="texto-modal">Redefinir Senha</h2>
-                <p class="text-center text-white mb-4">Digite sua nova senha.</p>
-                <div class="input-group">
-                    <input type="password" id="new-password" placeholder="Nova Senha" required>
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </span>
+        <!-- Modal de Login -->
+        <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 relative">
+            
+            <!-- Botão Fechar -->
+            <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 text-2xl">&times;</button>
+            
+            <!-- Cabeçalho -->
+            <h2 class="text-2xl font-bold text-center text-red-700 mb-4 font-[Libre_Baskerville]">Entrar</h2>
+            <p class="text-center text-gray-600 mb-6 text-sm">Acesse sua conta para continuar o estudo bíblico</p>
+            
+            <!-- Formulário -->
+            <form>
+                <div class="mb-4">
+                <label for="usuario" class="block text-gray-700 font-semibold mb-1">Usuário</label>
+                <input type="text" id="usuario" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Digite seu nome de usuário">
                 </div>
-                <div class="input-group">
-                    <input type="password" id="confirm-new-password" placeholder="Confirmar Nova Senha" required>
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </span>
-                </div>
-                <button id="reset-password-btn" class="modal-button login-button mt-4" title="Redefinir sua senha">Redefinir Senha</button>
-                <button id="back-to-forgot-btn" class="modal-button register-button mt-2" title="Voltar para o passo anterior">Voltar</button>
+                
+                <div class="mb-4">
+                <label for="senha" class="block text-gray-700 font-semibold mb-1">Senha</label>
+                <input type="password" id="senha" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Digite sua senha">
+                </div> 
+                
+            <a href="../HTML/PrimeiroAcesso.html"type="submit">Cadastrar-se</a>
+                <button type="submit" class="w-full bg-red-700 text-white py-2 rounded-md hover:bg-red-800 transition-all">Entrar</button>
+            </form>
             </div>
-        </div>
-
-        <!-- Modal de Sucesso (Invisível inicialmente) -->
-        <div id="success-modal" class="modal-overlay">
-            <div class="modal-container">
-                <h2 class="texto-modal">Sucesso!</h2>
-                <p class="text-center text-white mb-4">Sua senha foi redefinida com sucesso. Você pode agora fazer login.</p>
-                <button id="close-success-modal-btn" class="modal-button login-button mt-4" title="Fechar modal de sucesso">Fechar</button>
-            </div>
-        </div>
+  </div>
+  
 
     </header>
-    <!-- Seção para a imagem do lobo laranja -->
-    <!-- <section class="secao-lobo-laranja">
-        <img src="../src/IMG/logonossa.png" alt="Logotipo do LifeTask em formato de lobo laranja" title="Logotipo do LifeTask" class="imglobo">
-    </section> -->
-    <!-- Hero Section -->
-    <section id="home" class="secao-hero-estilo">
-        <div class="hero-conteudo-principal">
-            <h1 class="Otimizar-titulo">OTIMIZE SUA ROTINA ESPIRITUAL COM UMA ÚNICA PLATAFORMA</h1><br>
-            <h1 class="Otimizar-titulo" style="font-weight: 400;font-family: sans-serif;">
-                Reunimos as melhores práticas de devoção, meditação, 
-                leitura e estudo em um só lugar. Tenha acesso a conteúdos exclusivos, 
-                acompanhamento de progresso e ferramentas interativas para cultivar sua espiritualidade 
-                de forma consistente e profunda, onde quer que você esteja. 
-                Simplifique sua vida espiritual e fortaleça sua conexão diariamente.
-            </h1>
+   
+    <section class="hero">
+        <div class="hero-content">
+          <h1>“A Palavra é lâmpada para os meus pés”</h1>
+          <p>Conheça o projeto que inspira vidas através do estudo diário da Bíblia.</p>
+          <a href="#sobre" class="btn-primary">Saiba mais</a>
         </div>
-        <div class="hero-imagem-container">
-            <img src="../src/IMG/lifetask.png" alt="Mockup mostrando a interface da plataforma LifeTask em uma reunião" title="Plataforma LifeTask em ação" class="hero-imagem-mockup">
-        </div>
+      </section>
+
+    <section id="sobre" class="sobre">
+        <div class="sobre-conteudo-principal">
+                <h2>Sobre o Projeto</h2>
+                <p> O <strong>HUIOS</strong> é um espaço criado para ajudar você a se aproximar mais de Deus 
+                  através do estudo bíblico diário. Aqui, unimos tecnologia e fé para transformar o tempo de leitura 
+                  da Bíblia em um momento de aprendizado e comunhão. </p></div>
+            
+            <div class="hero-imagem">
+            <img src="../src/IMG/img-jesus.png" alt="Mockup mostrando a interface da plataforma LifeTask em uma reunião" title="Plataforma LifeTask em ação" class="hero-imagem-mockup">
+            </div>
     </section>
-    <!-- Tudo em um só lugar Section -->
-    <section class="secao-tudo-em-um">
-        <div class="borda-cards-container">
-            <h2 class="titulo-cards-secao">Tudo para o seu Crescimento Espiritual. <br>Para sua jornada de fé.</h2>
-            <div class="cards-grid-container">
-                <div class="card-item">
-                    <img src="../src/IMG/Tarefas.png" alt="Tarefas suas" class="card-imagem">
-                    <p class="card-texto" + class="">Encontre Conteúdo por Tema<br><span class="span-tudo-um">Pesquise e organize vídeos de pregações sobre doutrinas, estudos bíblicos e temas relevantes.</span></p>
-                </div>
-                <div class="card-item card-item-central">
-                    <img src="../src/IMG/TarefasGerente.png" alt="Tarefas de Gerente" class="card-imagem">
-                    <p class="card-texto">Acompanhe as novas postagens dos seus pastores favoritos<br><span class="span-tudo-um">Acesse rapidamente os vídeos mais recentes de diversos pregadores e teólogos que você confia.</span></p>
-                </div>
-                <div class="card-item">
-                    <img src="../src/IMG/envio.png" alt="Envio de Tarefas" class="card-imagem">
-                    <p class="card-texto">Crie sua Biblioteca de Estudos<br><span class="span-tudo-um">Salve e organize vídeos para assistir mais tarde, montando seu próprio plano de aprofundamento.</span></p>
-                </div>
-            </div>
-        </div>
-             <hr class="linha-separadora">
-    </section>
-    <!-- Sobre Nós Section -->
-    <section id="sobre-nos" class="secao-sobre-nos">
-        <div class="sobre-nos-conteudo-wrapper">
-            <h2 class="nos-title">Nós...</h2>
-            <div class="sobre-nos-inner-flex">
-                <!-- Div que terá a cor de fundo #d88e00 -->
-                <div class="sobre-nos-texto-div">
-                    <p class="sobre-nos-texto">
-                        Huios é uma plataforma digital dedicada a otimizar
-                        e enriquecer a rotina espiritual do protestante. 
-                        Nossa missão é ser o seu principal ponto de encontro
-                        com o conhecimento bíblico, indexando e organizando pregações,
-                        estudos e conteúdo teológico de pastores e criadores de diversas 
-                        denominações. Criamos a Huios para ser a ferramenta que une 
-                        o melhor conteúdo cristão da internet, ajudando você a crescer em clareza, 
-                        propósito e profundidade na sua jornada de fé.</p>
-                </div>
-                <div class="sobre-nos-imagem-container">
-                    <img src="../src/IMG/mockup.png" alt="Imagem representando um ambiente de escritório ou edifício corporativo" title="Ambiente corporativo" class="sobre-nos-imagem">
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr class="linha-separadora2">
-<!-- Funcionalidades Section (com carrossel) -->
-    <section id="funcionalidades" class="secao-funcionalidades">
-        <h2 class="titulo-funcionalidades">Pastores</h2>
-        <div class="funcionalidades-conteudo-wrapper">
-            <!-- Imagem Fixa - À ESQUERDA -->
-            <div class="imagem-fixa-container">
-                <img src="../src/IMG/AcessoProfissional.png" alt="Imagem ilustrativa de acesso profissional ou painel de controle" title="Painel de Controle Profissional" class="imagem-fixa">
-            </div>
-            <div class="carrossel-principal-container">
-                <!-- Carrossel com os textos (à direita) -->
-                <div class="carousel-wrapper" id="funcionalidades-carousel">
-                    <!-- Slide 1: Chefe -->
-                    <div class="carrossel-item-estilo">
-                        <h3 class="carrossel-item-titulo">Chefe</h3>
-                        <ul class="carrossel-item-lista">
-                            <li>Painel com lista de funcionários, filtros e resumo de desempenho</li><br>
-                            <li>Gráfico de demandas e produtividade</li><br>
-                            <li>Gestão de projetos (Kanban, prazos, prioridades)</li><br>
-                            <li>Trilha de desenvolvimento de cada funcionário</li><br>
-                            <li>Relatórios diários com anotações e anexos</li><br>
-                        </ul>
-                    </div>
-                    <!-- Slide 2: Funcionário -->
-                    <div class="carrossel-item-estilo">
-                        <h3 class="carrossel-item-titulo">Funcionário</h3>
-                        <ul class="carrossel-item-lista">
-                            <li>Acesso aos projetos e tarefas</li><br>
-                            <li>Checklist e status por atividade</li><br>
-                            <li>Feedbacks e histórico</li><br>
-                            <li>Painel de anotações pessoais</li><br>
-                            <li>Acompanhamento da própria trilha de crescimento</li><br>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Setas Do Carrossel -->
-                <button class="carousel-arrow left" id="prev-slide" title="Slide anterior">&#10094;</button> <!-- tabindex removido -->
-                <button class="carousel-arrow right" id="next-slide" title="Próximo slide">&#10095;</button> <!-- tabindex removido -->
-                <!-- Botões mostrando a pagina atual/total de paginas -->
-                <div class="carrossel-dots-container" id="funcionalidades-dots">
-                    <span class="dot active" data-slide="0"></span> <!-- tabindex removido -->
-                    <span class="dot" data-slide="1"></span>       <!-- tabindex removido -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr class="linha-separadora3">
-    <!-- Parcerias Section (com degradê e links nos botões) -->
-    <section id="parcerias" class="secao-parcerias">
-        <h2 class="titulo-parcerias">Parcerias</h2>
-        <div class="parcerias-container-flex">
-            <!-- Primeira linha de parcerias -->
-            <div class="parcerias-linha-flex">
-                <a href="https://www.carrefour.com.br" target="_blank" class="parceria-botao" title="Visitar site da Carrefour">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5bPacM874DY72_452hLzZglVJyuAy2vSwTA&s" alt="Logo da Carrefour" class="parceria-logo">
-                </a>
-                <a href="https://banco.bradesco" target="_blank" class="parceria-botao" title="Visitar site do Bradesco">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDNVTc3mhbojIWSX9gonGIPaDetl3AhP66kA&s" alt="Logo do Bradesco" class="parceria-logo">
-                </a>
-                <a href="https://www.philips.com.br" target="_blank" class="parceria-botao" title="Visitar site da Philips">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR4JE6VQClyp15PzK-moURndIsg51Tcd0_cw&s" alt="Logo da Philips" class="parceria-logo">
-                </a>
-                <a href="https://www.inter.co" target="_blank" class="parceria-botao inter-botao" title="Visitar site do Inter">
-                    <img src="https://altarendablog.com.br/wp-content/uploads/2023/12/3afb1b054f7646acabdcd1e953f77c7d_thumb1.jpg" alt="Logo do Inter" class="parceria-logo">
-                </a>
-                <a href="https://github.com" target="_blank" class="parceria-botao" title="Visitar site do GitHub">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" alt="Logo do GitHub" class="parceria-logo">
-                </a>
-                <a href="https://www.localiza.com.br" target="_blank" class="parceria-botao" title="Visitar site da Localiza">
-                    <img src="https://www.meioemensagem.com.br/wp-content/uploads/2016/02/Localiza_Logo_300.jpg" alt="Logo da Localiza" class="parceria-logo">
-                </a>
-                <a href="https://www.cocacola.com" target="_blank" class="parceria-botao" title="Visitar site da Coca-Cola">
-                    <img src="https://logodownload.org/wp-content/uploads/2014/04/coca-cola-logo-0.png" alt="Logo da Coca-Cola" class="parceria-logo">
-                </a>
-            </div>
-            <!-- Segunda linha de parcerias -->
-            <div class="parcerias-linha-flex-base">
-                <a href="https://www.ford.com.br" target="_blank" class="parceria-botao2" title="Visitar site da Ford">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk063iVw71pUMeTXNWV7AmlYrZbEkPEwgADQ&s" alt="Logo da Ford" class="parceria-logo">
-                </a>
-                <a href="https://www.dio.me/en" target="_blank" class="parceria-botao2" title="Visitar site da Diome">
-                    <img src="https://ac-landing-pages-user-uploads-production.s3.amazonaws.com/0000051657/a6176d56-6fab-496b-93a9-b95c0f49b56b.png" alt="Logo da Diome" class="parceria-logo">
-                </a>
-                <a href="https://www.unimedcuritiba.com.br" target="_blank" class="parceria-botao2" title="Visitar site da Unimed">
-                    <img src="https://paper-attachments.dropboxusercontent.com/s_8FBE74AB5A1A6464C9748AB9DDBC694AB94C81E1C349407F830A52A036B265AF_1708122783646_Domestika++Plau+22.11.22-31.png" alt="Logo da Unimed" class="parceria-logo">
-                </a>
-                <a href="https://app.pontomais.com.br" target="_blank" class="parceria-botao2" title="Visitar site do Pontomais">
-                    <img src="https://play-lh.googleusercontent.com/H1xEJ-WqMnWgY3euo5I5aXuKazvg0ln3j0G_bdNt7kLQ1LQAnij4JSIoaYvUw8UoFyY" alt="Logo do Pontomais" class="parceria-logo">
-                </a>
-                <a href="https://sportheca.io" target="_blank" class="parceria-botao2" title="Visitar site da Sportheca">
-                    <img src="https://s.criacaostatic.cc/sporthecaqtuc3ciu/uploads/2022/06/sportheca-circle-icon.png" alt="Logo da Sportheca" class="parceria-logo">
-                </a>
-                <a href="https://www.ifood.com.br" target="_blank" class="parceria-botao2" title="Visitar site do iFood">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkwxCc8e1FNRIuGcMD2DWIAPLjDFpTiEBlLg&s" alt="Logo do iFood" class="parceria-logo">
-                </a>
-                <a href="https://www.santander.com.br" target="_blank" class="parceria-botao2" title="Visitar site do Santander">
-                    <img src="https://cdn.brandfetch.io/santanderconsumer.se/fallback/lettermark/theme/dark/h/256/w/256/icon?c=1bfwsmEH20zzEfSNTed" alt="Logo do Santander" class="parceria-logo">
-                </a>
-            </div>
-        </div>
-    </section>
+
+
     <!-- Footer -->
     <footer class="rodape-estilo">
-        <div class="rodape-grid-container">
-            <!-- Coluna 1: Logo e Redes Sociais -->
+        <div class="footer">
+
             <div class="rodape-coluna-logo-redes">
-                <img src="../src/IMG/LogoFooter.png" alt="Logotipo do LifeTask no rodapé" title="Logotipo do LifeTask" class="rodape-logo">
                 <div class="rodape-redes-sociais">
                     <a href="https://www.linkedin.com" target="_blank" class="rodape-icone-social" title="Visitar LinkedIn do LifeTask">
                         <svg class="rodape-icone-svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="LinkedIn"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 7a2 2 0 110-4 2 2 0 010 4z"></path></svg>

@@ -1,9 +1,8 @@
-/* style.css */
 :root {
   --bg-color: #fdf8f1;
   --card-color: #fffdf8;
-  --accent-red: #4b0000;
-  --accent-softred: #6b1010;
+  --accent-red: hsl(263, 73%, 61%);
+  --accent-softred: #6aa6d6;
   --text-color: #3a1f1f;
   --text-muted: #7b5a55;
 }
