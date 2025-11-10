@@ -41,7 +41,17 @@ function initCarousel(carouselId) {
   startAutoSlide();
   updateCarousel();
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(carousel => {
+    const carouselId = carousel.id; 
+    if (carouselId) {
+      initCarousel(carouselId);
+    } else {
+      console.warn('Carousel sem ID. Adicione ID.', carousel);
+    }
+  });
+});
 
 //Tema Kids 
 

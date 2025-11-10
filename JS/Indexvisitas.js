@@ -23,20 +23,43 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Validação do login
     const form = modal.querySelector("form");
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-  
+
       const usuario = document.getElementById("usuario").value.trim();
       const senha = document.getElementById("senha").value.trim();
-  
-      // Usuário padrão
-      const usuarioPadrao = "huios";
-      const senhaPadrao = "123";
-  
-      if (usuario === usuarioPadrao && senha === senhaPadrao) {
-        window.location.href = "IndexLogado.html";
-      } else {
-        alert("Usuário ou senha incorretos. Tente novamente.");
+
+      // Validação básica
+      if (!usuario || !senha) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      try {
+        // Envia os dados para o endpoint de login no backend
+        const resposta = await fetch('/api/login', { // Substitua '/api/login' pelo caminho correto da sua rota
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ usuario, senha })
+        });
+
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+          // Login bem-sucedido
+          console.log("Login realizado com sucesso:", dados.usuario); // Dados retornados do backend (opcional)
+          // Redireciona para a página logada
+          window.location.href = "../HTML/IndexLogado.html";
+        } else {
+          // Login falhou (credenciais inválidas ou outro erro)
+          alert(dados.mensagem || "Usuário ou senha incorretos. Tente novamente.");
+        }
+      } catch (erro) {
+        // Erro de conexão ou outro erro inesperado
+        console.error("Erro na requisição de login:", erro);
+        alert("Erro de conexão com o servidor. Tente novamente mais tarde.");
       }
     });
   });
