@@ -21,7 +21,7 @@ app.use('/docker', express.static(path.join(__dirname, '../docker')));
 // --- Rotas da API
 app.use('/api', usuariosRouter);
 
-// Rota raiz (exemplo: abrir PrimeiroAcesso.html)
+// Rota raiz (exemplo: abrir IndexVisitas.html)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../HTML/IndexVisitas.html'));
 });

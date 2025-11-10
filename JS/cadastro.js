@@ -16,6 +16,8 @@ function manipularEnvio(evento) {
     const valorEmail = campoEmail.value.trim();
     const valorSenha = campoSenha.value;
 
+    const erros = {};
+
     // Validar nome
     if (valorNome === '' || valorNome.length < 5) {
         erros.nome = 'O nome deve ter pelo menos 5 caracteres.';
